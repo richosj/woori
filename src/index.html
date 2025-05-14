@@ -6,10 +6,140 @@
 <html lang="ko">
 <head>
     {{> meta}}
+    
 </head>
 <body>
+
+    <header id="header" class="header">
+        <div class="header-container">
+            <h1 class="logo"><a href="/"></a></h1>
+            <nav class="nav">
+                <ul class="menu">
+                    <li class="menu-item"><a href="#">회사소개</a>
+                        <ul class="sub-menu">
+                            <li><a href="#">경영이념</a></li>
+                            <li><a href="#">인사말</a></li>
+                            <li><a href="#">걸어온 길</a></li>
+                            <li><a href="#">조직도</a></li>
+                            <li><a href="#">면허</a></li>
+                            <li><a href="#">오시는 길</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item"><a href="#">사업분야</a>
+                        <ul class="sub-menu">
+                            <li><a href="">재개발</a></li>
+                            <li><a href="">재건축</a></li>
+                            <li><a href="">소규모정비사업</a></li>
+                            <li><a href="">리모델링</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item"><a href="#">주요실적</a>
+                        <ul class="sub-menu">
+                            <li><a href="#">ALL</a></li>
+                            <li><a href="#">재개발</a></li>
+                            <li><a href="#">재건축</a></li>
+                            <li><a href="#">소규모정비사업</a></li>
+                            <li><a href="#">리모델링</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item"><a href="#">NEWS</a>
+                        <ul class="sub-menu">
+                            <li><a href="">공지사항</a></li>
+                            <li><a href="">뉴스</a></li>
+                            <li><a href="">문의하기</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-menu-bg"></div>
+    </header>
+    
+    <main id="main">
+        <section class="main-visual">
+            <div class="main-visual-container">
+                
+            </div>
+            <div class="main-visual-background"></div>
+        </section>
+
+        <section class="section-1">
+            <div class="text-wrapper">
+                <div class="text-line">
+                  <div class="text-fill">원칙과 성심을 기본으로</div>
+                  <div class="text-stroke">원칙과 성심을 기본으로</div>
+                </div>
+                <div class="text-line">
+                  <div class="text-fill">꿈이 담긴 미래주택문화 선도</div>
+                  <div class="text-stroke">꿈이 담긴 미래주택문화 선도</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 추가 섹션은 여기에 배치됩니다 -->
+        <section class="section-2">
+            <!-- 섹션 2 콘텐츠 -->
+        </section>
+        
+        <section class="section-3">
+            <!-- 섹션 3 콘텐츠 -->
+        </section>
+    </main>
+
+    <footer id="footer">
+        
+    </footer>
     
     
     <script type="module" src="/js/main.js"></script>
+    <script>
+        // GSAP 애니메이션 초기화
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // 텍스트 애니메이션 함수
+        function initTextAnimations() {
+            const section = document.querySelector(".section-1"); // 특정 섹션
+            const lines = section.querySelectorAll(".text-line");
+            
+            // 첫 번째 줄 애니메이션
+            gsap.fromTo(
+                lines[0].querySelector(".text-fill"),
+                { clipPath: "inset(0 100% 0 0)" },
+                {
+                    clipPath: "inset(0 0% 0 0)",
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: lines[0],
+                        start: "top 80%",
+                        end: "top 30%",
+                        scrub: true
+                    }
+                }
+            );
+            
+            // 두 번째 줄 애니메이션
+            gsap.fromTo(
+                lines[1].querySelector(".text-fill"),
+                { clipPath: "inset(0 100% 0 0)" },
+                {
+                    clipPath: "inset(0 0% 0 0)",
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: lines[0],
+                        start: "top 30%",
+                        end: "top 0%",
+                        scrub: true
+                    }
+                }
+            );
+        }
+        
+        // 페이지 로드 시 애니메이션 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            initTextAnimations();
+            
+            // 추가 섹션에 대한 애니메이션은 여기에 추가
+        });
+      </script>
 </body>
 </html>

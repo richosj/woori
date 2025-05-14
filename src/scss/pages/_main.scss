@@ -5,3 +5,51 @@
 @use '../utils/functions' as *;
 @use '../utils/mixins' as *;
 
+
+.main-visual-background{
+    width: 100vw;
+    height: 100vh;
+    background: url(#{$image-path}/main-visual-background.png) no-repeat center center / cover;
+    
+}
+
+.text-wrapper {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.5;
+    width: fit-content;
+    margin: 200px auto; /* 스크롤 테스트용 */
+    position: relative;
+  }
+  
+  .text-line {
+    position: relative;
+    height: 1em;
+    margin-bottom: 0.5em;
+  }
+  
+  .text-fill,
+  .text-stroke {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+  }
+  
+  .text-stroke {
+    -webkit-text-stroke: 1px black;
+    color: transparent;
+  }
+  
+  .text-fill {
+    color: black;
+    clip-path: inset(0 100% 0 0); /* 왼쪽에서 오른쪽으로 채움 */
+  }
+  .space{
+    height: 150vh;
+  }
+
+  .section-1{
+    height: 100vh;
+    
+  }
