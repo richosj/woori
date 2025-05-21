@@ -4,3 +4,47 @@
 @use 'sass:map';
 @use 'sass:math';
 
+
+#footer {
+    background-color: #111111;
+    padding: 100px 0;
+}
+.footer{
+    &-container{
+        display: flex;
+        margin: 0 auto;
+        max-width: var(--width);
+        padding: 0 var(--gutter);
+        gap: 0 125px;
+        h2{
+            width: 100px;
+            height: 106px;
+            background: url(#{$image-path}/footer.png) no-repeat center center / contain;
+        }
+    }
+    &-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .footer-info{
+            color: #999999;
+            font-size: 16px;
+            a{color: #999;}
+            dl{
+                display: flex;
+                dt{
+                    font-weight: 700;
+                }
+            }
+            div{
+                display: flex;
+                gap:0 20px;
+                padding-top: 12px;
+            }
+        }
+        .copyright{
+            color: #999999;
+            font-size: 16px;
+        }
+    }
+}

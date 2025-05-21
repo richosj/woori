@@ -1,0 +1,58 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@use '../utils/variables' as *;
+@use '../utils/functions' as *;
+@use '../utils/mixins' as *;
+
+
+.service-section {
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: url(#{$image-path}/sec2-bg.png) no-repeat center center / cover;
+    
+    .service-title {
+      font-size: 60px;
+      font-weight: 500;
+      margin-bottom: 130px;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  
+    .service-list {
+      display: flex;
+      justify-content: space-around;
+      gap: 0 160px;
+      
+      .service-item {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: transform 0.3s;
+        img {
+          margin-bottom: 85px;
+          transition: transform 0.3s ease, filter 0.3s ease;
+        }
+  
+        h3 {
+          font-size: 32px;
+          margin-bottom: 8px;
+        }
+  
+        p {
+          font-size: 20px;
+          font-weight: 500;
+          color: #fff;
+          opacity: 0.6;
+        }
+  
+        &:hover img {
+          transform: scale(1.1);
+          filter: drop-shadow(0 0 6px #00f0ff80);
+        }
+      }
+    }
+  }
