@@ -4,10 +4,12 @@
 <!-- @pageNote 메인 구성 변경 -->
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     {{> meta}}
-    
+
 </head>
+
 <body>
 
     <header id="header" class="header">
@@ -52,11 +54,71 @@
                         </li>
                     </ul>
                 </nav>
+                <div class="util">
+                    <button type="button" class="mobile-button" id="btnMobile" title="메뉴 열림">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                </div>
             </div>
         </div>
         <div class="header-menu-bg"></div>
     </header>
-    
+
+    <aside id="mobileAside" class="mobile-gnb">
+        <div class="mobile-gnb-wrapper">
+            <ul class="mobile-menu">
+                <li class="gnb--li1">
+                    <a href="#" class="menuitem"><span>회사소개</span></a>
+                    <div class="depth">
+                        <ul>
+                            <li><a href="#">경영이념</a></li>
+                            <li><a href="#">인사말</a></li>
+                            <li><a href="#">걸어온 길</a></li>
+                            <li><a href="#">조직도</a></li>
+                            <li><a href="#">면허</a></li>
+                            <li><a href="#">오시는 길</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="gnb--li1">
+                    <a href="#" class="menuitem"><span>사업분야</span></a>
+                    <div class="depth">
+                        <ul>
+                            <li><a href="#">재개발</a></li>
+                            <li><a href="#">재건축</a></li>
+                            <li><a href="#">소규모정비사업</a></li>
+                            <li><a href="#">리모델링</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="gnb--li1">
+                    <a href="#" class="menuitem"><span>주요실적적</span></a>
+                    <div class="depth">
+                        <ul>
+                            <li><a href="#">ALL</a></li>
+                            <li><a href="#">재개발</a></li>
+                            <li><a href="#">재건축</a></li>
+                            <li><a href="#">소규모정비사업</a></li>
+                            <li><a href="#">리모델링</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="gnb--li1">
+                    <a href="#" class="menuitem"><span>NEWS</span></a>
+                    <div class="depth">
+                        <ul>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">뉴스</a></li>
+                            <li><a href="#">문의하기</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
     <main id="main">
         <section class="main-visual">
             <div class="main-visual-container">
@@ -65,13 +127,11 @@
                     <p class="split-text">축적된 경험과 최고의 기술력으로</p>
                     <p class="split-text">꿈이 담긴 미래 주택 문화 건설에 앞장서겠습니다.</p>
                 </div>
-                <div class="scroll-down-indicator">Scroll Down <i><svg 
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    width="19px" height="11px">
-                   <path fill-rule="evenodd"  fill="rgb(238, 238, 238)"
-                    d="M18.692,1.500 L9.500,10.693 L0.308,1.500 L1.722,0.086 L9.500,7.864 L17.278,0.086 L18.692,1.500 Z"/>
-                   </svg></i></div>
+                <div class="scroll-down-indicator">Scroll Down <i><svg xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" width="19px" height="11px">
+                            <path fill-rule="evenodd" fill="rgb(238, 238, 238)"
+                                d="M18.692,1.500 L9.500,10.693 L0.308,1.500 L1.722,0.086 L9.500,7.864 L17.278,0.086 L18.692,1.500 Z" />
+                        </svg></i></div>
             </div>
             <div class="main-visual-background"></div>
         </section>
@@ -79,12 +139,12 @@
         <section class="section-1">
             <div class="text-wrapper">
                 <div class="text-line">
-                  <div class="text-fill">원칙과 성심을 기본으로</div>
-                  <div class="text-stroke">원칙과 성심을 기본으로</div>
+                    <div class="text-fill">원칙과 성심을 기본으로</div>
+                    <div class="text-stroke">원칙과 성심을 기본으로</div>
                 </div>
                 <div class="text-line">
-                  <div class="text-fill">꿈이 담긴 미래주택문화 선도</div>
-                  <div class="text-stroke">꿈이 담긴 미래주택문화 선도</div>
+                    <div class="text-fill">꿈이 담긴 미래주택문화 선도</div>
+                    <div class="text-stroke">꿈이 담긴 미래주택문화 선도</div>
                 </div>
 
                 <div class="desc">"원칙"과 "성심"을 기본으로 고객의 신뢰,<br>고객의 행복이 커가는 아파트를 건설하는데 모든 노력을 다하겠습니다.</div>
@@ -128,7 +188,7 @@
             </div>
 
         </section>
-        
+
         <!-- 추가 섹션은 여기에 배치됩니다 -->
         <section class="service-section">
             <div class="inner">
@@ -156,8 +216,8 @@
                     </div>
                 </div>
             </div>
-         </section>
-        
+        </section>
+
         <section class="dream-section">
             <div class="inner">
                 <div class="dream-left">
@@ -218,18 +278,18 @@
             </div>
         </div>
     </footer>
-    
-    
+
+
     <script type="module" src="/js/main.js"></script>
     <script>
         // GSAP 애니메이션 초기화
-        gsap.registerPlugin(ScrollTrigger);
-        
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
         // 텍스트 애니메이션 함수
         function initTextAnimations() {
             const section = document.querySelector(".section-1"); // 특정 섹션
             const lines = section.querySelectorAll(".text-line");
-            
+
             // 첫 번째 줄 애니메이션
             gsap.fromTo(
                 lines[0].querySelector(".text-fill"),
@@ -245,7 +305,7 @@
                     }
                 }
             );
-            
+
             // 두 번째 줄 애니메이션
             gsap.fromTo(
                 lines[1].querySelector(".text-fill"),
@@ -262,19 +322,19 @@
                 }
             );
         }
-        
-        // 페이지 로드 시 애니메이션 초기화
-        document.addEventListener('DOMContentLoaded', () => {
-            initTextAnimations();
-            // 추가 섹션에 대한 애니메이션은 여기에 추가
-            gsap.to(".main-visual-background", {
-                scale: 1,
-                opacity: 1,
-                duration: 3.5,
-                ease: "power2.out"
-            });
 
-            document.querySelectorAll('.split-text').forEach(el => {
+        // 페이지 로드 시 애니메이션 초기화
+
+        initTextAnimations();
+        // 추가 섹션에 대한 애니메이션은 여기에 추가
+        gsap.to(".main-visual-background", {
+            scale: 1,
+            opacity: 1,
+            duration: 3.5,
+            ease: "power2.out"
+        });
+
+        document.querySelectorAll('.split-text').forEach(el => {
             const text = el.textContent;
             el.innerHTML = '';
 
@@ -292,34 +352,34 @@
                 ease: 'power2.out',
                 delay: 1
             });
-            });
+        });
 
-            ScrollTrigger.create({
-                trigger: ".biz-section",
-                start: "top top",
-                //end: () => "+=" + document.querySelector(".biz-right").scrollHeight,
-                pin: ".biz-left",
-                pinSpacing: true
-            });
+        ScrollTrigger.create({
+            trigger: ".biz-section",
+            start: "top top",
+            //end: () => "+=" + document.querySelector(".biz-right").scrollHeight,
+            pin: ".biz-left",
+            pinSpacing: true
+        });
 
-            // 💨 카드 하나씩 올라오기
-            gsap.utils.toArray(".biz-card").forEach((card, i) => {
+        // 💨 카드 하나씩 올라오기
+        gsap.utils.toArray(".biz-card").forEach((card, i) => {
             gsap.to(card, {
                 opacity: 1,
                 y: 0,
                 duration: 1,
                 ease: "power2.out",
                 scrollTrigger: {
-                trigger: card,
-                start: "top 85%",
-                toggleActions: "play none none reverse"
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
                 }
             });
-            });
+        });
 
 
-            // 전체 섹션 타이틀 애니
-            gsap.to(".service-title", {
+        // 전체 섹션 타이틀 애니
+        gsap.to(".service-title", {
             opacity: 1,
             y: 0,
             duration: 1,
@@ -328,25 +388,303 @@
                 trigger: ".service-section",
                 start: "top 80%"
             }
-            });
+        });
 
-            // 아이템 stagger 등장
-            gsap.to(".service-item", {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                stagger: 0.2,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: ".service-list",
-                    start: "top 85%"
+        // 아이템 stagger 등장
+        gsap.to(".service-item", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".service-list",
+                start: "top 85%"
+            }
+        });
+
+
+        var mediaScreen = {
+            sm: 576,
+            md: 768,
+            lg: 1000,
+            xl: 1440,
+            xxl: 1660
+        };
+
+        var body = document.body;
+        var header = document.getElementById('header');
+        var btnMobile = document.getElementById('btnMobile');
+        var gnbItems = document.querySelectorAll('#gnb > li');
+        var mobileMenuUL = document.querySelector('ul.mobile-menu');
+        var mobileMenus = document.querySelectorAll('ul.mobile-menu .menuitem');
+        var dropdownButtons = document.querySelectorAll(".dropdownButton");
+        var handleMobileButtonClick = function handleMobileButtonClick() {
+            btnMobile.classList.toggle('active');
+            body.classList.toggle('mobile-active');
+        };
+        mobileMenuUL.addEventListener('click', function (event) {
+            if (event.target && event.target.classList.contains('menuitem')) {
+                event.preventDefault();
+                var parentLi = event.target.parentElement;
+                var siblings = parentLi.parentElement.children;
+                Array.prototype.forEach.call(siblings, function (sibling) {
+                    if (sibling !== parentLi) {
+                        sibling.classList.remove('active');
+                    }
+                });
+                parentLi.classList.toggle('active');
+            }
+        });
+        var handleGnbItemMouseOver = function handleGnbItemMouseOver() {
+            header.classList.add('open');
+        };
+        var handleGnbItemMouseOut = function handleGnbItemMouseOut() {
+            header.classList.remove('open');
+        };
+        var handleDropdownButtonClick = function handleDropdownButtonClick(button, dropdownMenu, menuItems) {
+            var isOpen = false;
+            var toggleDropdown = function toggleDropdown() {
+                isOpen = !isOpen;
+                button.setAttribute("aria-expanded", isOpen);
+                //dropdownMenu.style.display = isOpen ? "block" : "none";
+            };
+            button.addEventListener("click", function (event) {
+                event.stopPropagation();
+                toggleDropdown();
+            });
+            button.addEventListener("keydown", function (event) {
+                if (event.key === "ArrowDown") {
+                    event.preventDefault();
+                    if (!isOpen) toggleDropdown();
+                    menuItems[0].focus();
+                }
+            });
+            menuItems.forEach(function (item, index) {
+                item.addEventListener("keydown", function (event) {
+                    var _handleKeyDown$event$;
+                    var handleKeyDown = {
+                        ArrowDown: function ArrowDown() {
+                            event.preventDefault();
+                            menuItems[(index + 1) % menuItems.length].focus();
+                        },
+                        ArrowUp: function ArrowUp() {
+                            event.preventDefault();
+                            menuItems[(index - 1 + menuItems.length) % menuItems.length].focus();
+                        },
+                        Escape: function Escape() {
+                            toggleDropdown();
+                            button.focus();
+                        }
+                    };
+                    (_handleKeyDown$event$ = handleKeyDown[event.key]) === null || _handleKeyDown$event$ === void 0 || _handleKeyDown$event$.call(handleKeyDown);
+                });
+                item.addEventListener("click", function () {
+                    button.textContent = item.textContent;
+                    toggleDropdown();
+                });
+            });
+            document.addEventListener("click", function (event) {
+                if (!button.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    if (isOpen) {
+                        toggleDropdown();
+                    }
+                }
+            });
+        };
+
+        // 헤더 스크롤 이벤트
+        function headers() {
+            var header = document.querySelector('.header');
+            var breadcrumb = document.querySelector('.breadcrumb');
+            var breadcrumbTop = header.offsetHeight;
+            var lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+            function updateScrollDirection() {
+                var currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+                var isScrollingDown = currentScrollY > lastScrollY;
+                if (header.classList.contains('_sub') && breadcrumb) {
+                    if (currentScrollY >= breadcrumbTop) {
+                        if (isScrollingDown) {
+                            header.classList.add('hide');
+                            header.classList.remove('up');
+                        } else {
+                            header.classList.remove('hide');
+                            if (currentScrollY > 0) {
+                                header.classList.add('up');
+                            } else {
+                                header.classList.remove('up');
+                            }
+                        }
+                    } else {
+                        header.classList.remove('hide', 'up');
+                    }
+                } else {
+                    if (isScrollingDown) {
+                        header.classList.add('hide');
+                        header.classList.remove('up');
+                    } else {
+                        header.classList.remove('hide');
+                        if (currentScrollY > 0) {
+                            header.classList.add('up');
+                        } else {
+                            header.classList.remove('up');
+                        }
+                    }
+                }
+                lastScrollY = currentScrollY;
+            }
+
+            // 초기 스크롤 상태 반영
+            document.addEventListener('DOMContentLoaded', function () {
+                lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+                // 초기 스크롤 상태 반영
+                if (header.classList.contains('_sub') && breadcrumb) {
+                    var _breadcrumbTop = breadcrumb.getBoundingClientRect().top + window.scrollY;
+                    if (lastScrollY >= _breadcrumbTop) {
+                        header.classList.add('up hide');
+                    } else {
+                        header.classList.remove('up hide');
+                    }
+                } else {
+                    if (lastScrollY > 50) {
+                        header.classList.add('up hide');
+                    } else {
+                        header.classList.remove('up hide');
+                    }
                 }
             });
 
+            // 스크롤 이벤트 리스너 추가
+            window.addEventListener('scroll', updateScrollDirection);
+        }
+
+        // gnb copy => mobile paste
+        function updateMobileMenu() {
+            // gnb 아이디를 가진 ul 태그를 선택
+            var gnbUl = document.getElementById('gnb');
+            // mobile-menu 클래스를 가진 ul 태그를 선택
+            var mobileMenuUl = document.querySelector('ul.mobile-menu');
+            if (!mobileMenuUl) return;
+            // gnbUl의 자식 요소들을 모두 가져오기
+            var gnbChildren = gnbUl.innerHTML;
+            // mobileMenuUl에 gnbUl의 자식 요소들을 추가
+            mobileMenuUl.innerHTML = gnbChildren;
+
+            // gnb--li1 클래스를 가진 모든 li 요소 선택
+            var gnbLiElements = document.querySelectorAll('#gnb .gnb--li1');
+            var firstListUl = document.querySelector('ul.first-list');
+            if (firstListUl == null) return;
+            gnbLiElements.forEach(function (gnbLi) {
+                var firstATag = gnbLi.querySelector('a'); // 첫 번째 a 태그 선택
+                if (firstATag) {
+                    var newLi = document.createElement('li'); // 새로운 li 요소 생성
+                    newLi.appendChild(firstATag.cloneNode(true)); // a 태그를 복사하여 li에 추가
+                    firstListUl.appendChild(newLi); // 새로운 ul에 li 추가
+                }
+            });
+        }
+        var smoothscroll = {
+            passive: function passive() {
+                var supportsPassive = false;
+                try {
+                    document.addEventListener('test', null, {
+                        get passive() {
+                            supportsPassive = true;
+                        }
+                    });
+                } catch (e) { }
+                return supportsPassive;
+            },
+            init: function init() {
+                var userAgent = navigator.userAgent.toLowerCase();
+                var isMobile = /iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(userAgent);
+                var isMac = /macintosh|mac os x/i.test(userAgent);
+                var isWindows = /windows/i.test(userAgent);
+                var isLinux = /linux/i.test(userAgent);
+                if (isMobile || isMac) return;
+
+                //if (document.documentElement.classList.contains('mobile') || document.documentElement.classList.contains('mac')) return;
+
+                if (this.passive()) {
+                    window.addEventListener('wheel', this.scrolling, {
+                        passive: false
+                    });
+                } else {
+                    window.addEventListener('mousewheel', this.scrolling);
+                    window.addEventListener('DOMMouseScroll', this.scrolling);
+                }
+            },
+            destroy: function destroy() {
+                if (this.passive()) {
+                    window.removeEventListener('wheel', this.scrolling);
+                } else {
+                    window.removeEventListener('mousewheel', this.scrolling);
+                    window.removeEventListener('DOMMouseScroll', this.scrolling);
+                }
+                gsap.killTweensOf(window, {
+                    scrollTo: true
+                });
+            },
+            scrolling: function scrolling(event) {
+                event.preventDefault();
+                var scrollTime = 1;
+                var distanceOffset = 4.5;
+                var scrollDistance = window.innerHeight / distanceOffset;
+                var delta = 0;
+                if (smoothscroll.passive()) {
+                    delta = event.wheelDelta / 120 || -event.deltaY / 4;
+                } else {
+                    if (typeof event.originalEvent.deltaY != 'undefined') {
+                        delta = -event.originalEvent.deltaY / 120;
+                    } else {
+                        delta = event.originalEvent.wheelDelta / 120 || -event.originalEvent.detail / 3;
+                    }
+                }
+                var scrollTop = document.documentElement.scrollTop;
+                var finalScroll = scrollTop - parseInt(delta * scrollDistance);
+                gsap.to(window, {
+                    duration: scrollTime,
+                    scrollTo: {
+                        y: finalScroll,
+                        autoKill: true
+                    },
+                    ease: 'power3.out',
+                    overwrite: 5
+                });
+            }
+        };
 
 
+        var init = function init() {
+            smoothscroll.init();
+            headers();
+            updateMobileMenu();
+            document.getElementById('btnTop').addEventListener('click', function () {
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: {
+                        y: 0,
+                        autoKill: true
+                    }
+                });
+            });
+            btnMobile.addEventListener('click', handleMobileButtonClick);
+            mobileMenus.forEach(function (menu) {
+                menu.addEventListener('click', handleMobileMenuClick);
+            });
+            gnbItems.forEach(function (item) {
+                item.addEventListener('mouseover', handleGnbItemMouseOver);
+                item.addEventListener('mouseout', handleGnbItemMouseOut);
+            });
+            dropdownButtons.forEach(function (button) {
+                var dropdownMenu = document.getElementById(button.getAttribute("aria-controls"));
+                var menuItems = dropdownMenu.querySelectorAll('[role="menuitem"]');
+                handleDropdownButtonClick(button, dropdownMenu, menuItems);
+            });
+        };
+        document.addEventListener("DOMContentLoaded", init);
 
-        });
-      </script>
+    </script>
 </body>
+
 </html>
