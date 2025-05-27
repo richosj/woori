@@ -4,12 +4,9 @@
 @use 'sass:map';
 @use 'sass:math';
 
-
-#footer {
+.footer{
     background-color: #111111;
     padding: 100px 0;
-}
-.footer{
     &-container{
         display: flex;
         margin: 0 auto;
@@ -19,7 +16,7 @@
         h2{
             width: 100px;
             height: 106px;
-            background: url(#{$image-path}/footer.png) no-repeat center center / contain;
+            background: url(#{$image-path}/footer.png) no-repeat center center / cover;
         }
     }
     &-content{
@@ -45,6 +42,27 @@
         .copyright{
             color: #999999;
             font-size: 16px;
+        }
+    }
+    @media (max-width: 1024px) {
+        padding: 50px 0;
+        &-container{
+            flex-direction: column;
+            gap: 0;
+            h2{
+                margin: 0 auto;
+                width: 50px;
+                height: auto;
+                background-size: 100% auto;
+            }
+        }
+        &-content{
+            .footer-info{
+                font-size: 13px;
+            }
+            .copyright{
+                font-size: 13px;
+            }
         }
     }
 }
