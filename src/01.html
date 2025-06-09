@@ -1,0 +1,171 @@
+<!-- @pageTitle 메인 -->
+<!-- @pageCreated 2025-04-17 -->
+<!-- @pageUpdated 2025-04-21 -->
+<!-- @pageNote 메인 구성 변경 -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    {{> meta}}
+</head>
+
+<body>
+
+    {{> header}}
+
+    <div id="contents" data-layout="sub">
+        <div class="intro--banner">
+            <div class="intro--banner_point">
+                <div class="intro--banner_title">
+                    <div class="inner">
+                        <h2 class="page_title">회사소개</h2>
+                        <p class="sub_title_desc">고객과 함께하는 기업<br>우리씨엠씨</p>
+                    </div>
+                </div>
+                <div class="intro--banner_bg bg1">
+                    <div class="intro--visual"></div>
+                </div>
+            </div>
+        </div>
+        <!-- // intro--banner -->
+    </div>
+
+    {{> footer}}
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+        function introBanner() {
+            //var isNonScroll = document.querySelector('[data-current]');
+            var bannerTitle = document.querySelector('.intro--banner_title');
+            var visualElement = document.querySelector('.intro--visual');
+            var visualWrap = document.querySelector('.intro--banner_bg');
+            var intro = document.querySelector(".intro--banner");
+            if (!intro) return;
+            var introHeadAction = {
+                enter: function enter() {
+                    bannerTitle.classList.add('is-break');
+                    bannerTitle.style.marginTop = '0';
+                    bannerTitle.style.top = '45%';
+                    bannerTitle.style.transform = 'translateY(-50%)';
+                },
+                leave: function leave() {
+                    bannerTitle.classList.remove('is-break');
+                    bannerTitle.removeAttribute('style');
+                }
+            };
+            gsap.to('.page_title', {
+                scrollTrigger: {
+                    trigger: visualWrap,
+                    start: 'top 30%',
+                    end: 'top',
+                    scrub: 0.3,
+                    toggleClass: {
+                        targets: bannerTitle,
+                        className: 'is-active'
+                    }
+                }
+            });
+            gsap.to('.sub_title_desc', {
+                scrollTrigger: {
+                    trigger: visualWrap,
+                    start: 'top 30%',
+                    end: 'top',
+                    scrub: 0.3,
+                    toggleClass: {
+                        targets: bannerTitle,
+                        className: 'is-active'
+                    }
+                }
+            });
+            gsap.to(bannerTitle, {
+                scrollTrigger: {
+                    trigger: visualElement,
+                    start: function start() {
+                        return window.innerWidth <= 768 ? 'top 5%' : 'top 10%';
+                    },
+                    end: 'bottom',
+                    onEnter: function onEnter() {
+                        introHeadAction.enter();
+                    },
+                    onLeave: function onLeave() {
+                        // 클래스 추가
+                        bannerTitle.classList.add('is-break');
+
+                        // top 스타일을 현재 윈도우 스크롤 위치로 설정
+                        bannerTitle.style.top = "".concat(window.scrollY, "px");
+                        introHeadAction.enter();
+                    },
+                    onEnterBack: function onEnterBack() {
+                        introHeadAction.enter();
+                    },
+                    onLeaveBack: function onLeaveBack() {
+                        introHeadAction.leave();
+                    }
+                }
+            });
+            //if (isNonScroll.getAttribute('data-current') == "board") { } else {
+                ScrollTrigger.matchMedia({
+                    // Mobile
+                    "(max-width: 767px)": function maxWidth767px() {
+                        visualElement.removeAttribute('style');
+                        gsap.to(visualElement, {
+                            width: '100vw',
+                            borderRadius: '0',
+                            duration: 1,
+                            scrollTrigger: {
+                                trigger: visualElement,
+                                start: 'top 250px',
+                                end: 'bottom top',
+                                scrub: 1,
+                                ease: 'power4'
+                                //markers: true
+                            }
+                        });
+                    },
+                    "(max-width: 1279px)": function maxWidth1279px() {
+                        visualElement.removeAttribute('style');
+                        gsap.to(visualElement, {
+                            width: '100vw',
+                            borderRadius: '0',
+                            duration: 1,
+                            scrollTrigger: {
+                                trigger: visualElement,
+                                start: 'top 200px',
+                                end: 'top',
+                                scrub: 1,
+                                ease: 'power4'
+                                //markers: true
+                            }
+                        });
+                    },
+                    // Desktop
+                    "(min-width: 1280px)": function minWidth1280px() {
+                        visualElement.removeAttribute('style');
+                        gsap.to(visualElement, {
+                            width: '100vw',
+                            borderRadius: '0',
+                            duration: 1,
+                            scrollTrigger: {
+                                trigger: visualElement,
+                                start: 'top 400px',
+                                end: 'top',
+                                scrub: 1,
+                                ease: 'power4'
+                                //markers: true
+                            }
+                        });
+                    }
+                });
+            //}
+        }
+        introBanner();
+        // 윈도우 리사이즈 이벤트 핸들러 추가
+        window.addEventListener('resize', function () {
+            // ScrollTrigger.refresh() 호출
+            ScrollTrigger.refresh();
+        });
+    </script>
+
+</body>
+
+</html>

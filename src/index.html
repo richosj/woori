@@ -4,59 +4,16 @@
 <!-- @pageNote 메인 구성 변경 -->
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     {{> meta}}
-    
 </head>
+
 <body>
 
-    <header id="header" class="header">
-        <div class="header-wrap">
-            <div class="header-container">
-                <h1 class="logo"><a href="/"></a></h1>
-                <nav class="nav">
-                    <ul class="menu">
-                        <li class="menu-item"><a href="#">회사소개</a>
-                            <ul class="sub-menu">
-                                <li><a href="#">경영이념</a></li>
-                                <li><a href="#">인사말</a></li>
-                                <li><a href="#">걸어온 길</a></li>
-                                <li><a href="#">조직도</a></li>
-                                <li><a href="#">면허</a></li>
-                                <li><a href="#">오시는 길</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item"><a href="#">사업분야</a>
-                            <ul class="sub-menu">
-                                <li><a href="">재개발</a></li>
-                                <li><a href="">재건축</a></li>
-                                <li><a href="">소규모정비사업</a></li>
-                                <li><a href="">리모델링</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item"><a href="#">주요실적</a>
-                            <ul class="sub-menu">
-                                <li><a href="#">ALL</a></li>
-                                <li><a href="#">재개발</a></li>
-                                <li><a href="#">재건축</a></li>
-                                <li><a href="#">소규모정비사업</a></li>
-                                <li><a href="#">리모델링</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item"><a href="#">NEWS</a>
-                            <ul class="sub-menu">
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">뉴스</a></li>
-                                <li><a href="">문의하기</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="header-menu-bg"></div>
-    </header>
-    
+    {{> header}}
+
+    <!-- main // -->
     <main id="main">
         <section class="main-visual">
             <div class="main-visual-container">
@@ -65,13 +22,11 @@
                     <p class="split-text">축적된 경험과 최고의 기술력으로</p>
                     <p class="split-text">꿈이 담긴 미래 주택 문화 건설에 앞장서겠습니다.</p>
                 </div>
-                <div class="scroll-down-indicator">Scroll Down <i><svg 
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    width="19px" height="11px">
-                   <path fill-rule="evenodd"  fill="rgb(238, 238, 238)"
-                    d="M18.692,1.500 L9.500,10.693 L0.308,1.500 L1.722,0.086 L9.500,7.864 L17.278,0.086 L18.692,1.500 Z"/>
-                   </svg></i></div>
+                <div class="scroll-down-indicator">Scroll Down <i><svg xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" width="19px" height="11px">
+                            <path fill-rule="evenodd" fill="rgb(238, 238, 238)"
+                                d="M18.692,1.500 L9.500,10.693 L0.308,1.500 L1.722,0.086 L9.500,7.864 L17.278,0.086 L18.692,1.500 Z" />
+                        </svg></i></div>
             </div>
             <div class="main-visual-background"></div>
         </section>
@@ -79,12 +34,12 @@
         <section class="section-1">
             <div class="text-wrapper">
                 <div class="text-line">
-                  <div class="text-fill">원칙과 성심을 기본으로</div>
-                  <div class="text-stroke">원칙과 성심을 기본으로</div>
+                    <div class="text-fill">원칙과 성심을 기본으로</div>
+                    <div class="text-stroke">원칙과 성심을 기본으로</div>
                 </div>
                 <div class="text-line">
-                  <div class="text-fill">꿈이 담긴 미래주택문화 선도</div>
-                  <div class="text-stroke">꿈이 담긴 미래주택문화 선도</div>
+                    <div class="text-fill">꿈이 담긴 미래주택문화 선도</div>
+                    <div class="text-stroke">꿈이 담긴 미래주택문화 선도</div>
                 </div>
 
                 <div class="desc">"원칙"과 "성심"을 기본으로 고객의 신뢰,<br>고객의 행복이 커가는 아파트를 건설하는데 모든 노력을 다하겠습니다.</div>
@@ -130,7 +85,7 @@
             </div>
 
         </section>
-        
+
         <!-- 추가 섹션은 여기에 배치됩니다 -->
         <section class="service-section">
             <div class="inner">
@@ -158,8 +113,8 @@
                     </div>
                 </div>
             </div>
-         </section>
-        
+        </section>
+
         <section class="dream-section">
             <div class="dream-bg"></div>
             <div class="inner">
@@ -217,10 +172,9 @@
         // GSAP 애니메이션 초기화
         gsap.registerPlugin(ScrollTrigger);
         
-        // 페이지 로드 시 애니메이션 초기화
-        document.addEventListener('DOMContentLoaded', () => {
-            // 텍스트 애니메이션
-            const section = document.querySelector(".section-1");
+        // 텍스트 애니메이션 함수
+        function initTextAnimations() {
+            const section = document.querySelector(".section-1"); // 특정 섹션
             const lines = section.querySelectorAll(".text-line");
             
             // 첫 번째 줄 애니메이션
@@ -254,8 +208,12 @@
                     }
                 }
             );
-
-            // 메인 비주얼 배경 애니메이션
+        }
+        
+        // 페이지 로드 시 애니메이션 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            initTextAnimations();
+            // 추가 섹션에 대한 애니메이션은 여기에 추가
             gsap.to(".main-visual-background", {
                 scale: 1,
                 opacity: 1,
@@ -263,56 +221,63 @@
                 ease: "power2.out"
             });
 
-            // 텍스트 분할 애니메이션
             document.querySelectorAll('.split-text').forEach(el => {
-                const text = el.textContent;
-                el.innerHTML = '';
+            const text = el.textContent;
+            el.innerHTML = '';
 
-                text.split('').forEach(char => {
-                    const span = document.createElement('span');
-                    span.textContent = char;
-                    el.appendChild(span);
-                });
-
-                gsap.to(el.querySelectorAll('span'), {
-                    opacity: 1,
-                    y: 0,
-                    stagger: 0.04,
-                    duration: 0.8,
-                    ease: 'power2.out',
-                    delay: 1
-                });
+            text.split('').forEach(char => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                el.appendChild(span);
             });
 
-            // 비즈니스 섹션 핀 설정
+            gsap.to(el.querySelectorAll('span'), {
+                opacity: 1,
+                y: 0,
+                stagger: 0.04,
+                duration: 0.8,
+                ease: 'power2.out',
+                delay: 1
+            });
+            });
+
             ScrollTrigger.create({
                 trigger: ".biz-section",
-                start: "top top", 
-                end: "bottom bottom",
+                start: "top top",
+                //end: () => "+=" + document.querySelector(".biz-right").scrollHeight,
                 pin: ".biz-left",
                 pinSpacing: true
             });
 
-            // 서비스 섹션 애니메이션
-            ScrollTrigger.create({
-                trigger: ".service-section",
-                start: "top 50%",
-                end: "bottom 20%",
-                toggleClass: {
-                    targets: ".service-section",
-                    className: "active"
-                },
-                onEnter: () => {
-                    gsap.to(".service-title", {
-                        opacity: 1,
-                        y: 0,
-                        duration: 1,
-                        ease: "power2.out"
-                    });
+            // 💨 카드 하나씩 올라오기
+            gsap.utils.toArray(".biz-card").forEach((card, i) => {
+            gsap.to(card, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                toggleActions: "play none none reverse"
                 }
             });
+            });
 
-            // 서비스 아이템 애니메이션
+
+            // 전체 섹션 타이틀 애니
+            gsap.to(".service-title", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".service-section",
+                start: "top 80%"
+            }
+            });
+
+            // 아이템 stagger 등장
             gsap.to(".service-item", {
                 opacity: 1,
                 y: 0,
@@ -325,25 +290,9 @@
                 }
             });
 
-            // dream-section 배경 펼치기 애니메이션
-            gsap.to('.dream-section .dream-bg', {
-                width: '100vw',
-                duration: 2.2,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: '.dream-section',
-                    start: 'top 80%',
-                    toggleActions: 'play none none none'
-                }
-            });
 
-            ScrollTrigger.create({
-                trigger: '.dream-section',
-                start: 'top 80%',
-                onEnter: () => {
-                    document.querySelector('.dream-section').classList.add('bg-animate');
-                }
-            });
+
+
         });
       </script>
 </body>
