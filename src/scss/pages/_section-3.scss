@@ -6,5 +6,26 @@
 @use '../utils/mixins' as *;
 
 .dream-section{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: none;
 
+    .dream-bg {
+        position: absolute;
+        left: 0; top: 0;
+        width: 0vw;
+        height: 100%;
+        background: url('/assets/images/dream-bg.jpg') no-repeat center center / cover;
+        z-index: 0;
+        transition: width 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    &.bg-animate .dream-bg {
+        width: 100vw;
+    }
+    .inner {
+        position: relative;
+        z-index: 1;
+    }
 }

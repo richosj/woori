@@ -96,34 +96,36 @@
                     <a href="#">VIEW MORE</a>
                 </div>
                 <div class="bizright">
-                    <div class="biz-card">
-                        <div class="img"><img src="/assets/images/biz1.png" alt=""></div>
-                        <div class="detail">
-                            <h3>재개발</h3>
-                            <p>업계 최고의 도시정비사업 전문 회사</p>
-                        </div>
-                    </div>
-                    <div class="biz-card">
-                        <div class="img"><img src="/assets/images/biz2.png" alt=""></div>
-                        <div class="detail">
-                            <h3>재건축</h3>
-                            <p>업계 최고의 도시정비사업 전문 회사</p>
-                        </div>
-                    </div>
-                    <div class="biz-card">
-                        <div class="img"><img src="/assets/images/biz3.png" alt=""></div>
-                        <div class="detail">
-                            <h3>소규모정비사업</h3>
-                            <p>업계 최고의 도시정비사업 전문 회사</p>
-                        </div>
-                    </div>
-                    <div class="biz-card">
-                        <div class="img"><img src="/assets/images/biz4.png" alt=""></div>
-                        <div class="detail">
-                            <h3>리모델링</h3>
-                            <p>업계 최고의 도시정비사업 전문 회사</p>
-                        </div>
-                    </div>
+                    <ul>
+                        <li class="biz-card">
+                            <div class="img"><img src="/assets/images/biz1.png" alt=""></div>
+                            <div class="detail">
+                                <h3>재개발</h3>
+                                <p>업계 최고의 도시정비사업 전문 회사</p>
+                            </div>
+                        </li>
+                        <li class="biz-card">
+                            <div class="img"><img src="/assets/images/biz2.png" alt=""></div>
+                            <div class="detail">
+                                <h3>재건축</h3>
+                                <p>업계 최고의 도시정비사업 전문 회사</p>
+                            </div>
+                        </li>
+                        <li class="biz-card">
+                            <div class="img"><img src="/assets/images/biz3.png" alt=""></div>
+                            <div class="detail">
+                                <h3>소규모정비사업</h3>
+                                <p>업계 최고의 도시정비사업 전문 회사</p>
+                            </div>
+                        </li>
+                        <li class="biz-card">
+                            <div class="img"><img src="/assets/images/biz4.png" alt=""></div>
+                            <div class="detail">
+                                <h3>리모델링</h3>
+                                <p>업계 최고의 도시정비사업 전문 회사</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -159,6 +161,7 @@
          </section>
         
         <section class="dream-section">
+            <div class="dream-bg"></div>
             <div class="inner">
                 <div class="dream-left">
                     <div class="text-wrapper">
@@ -182,17 +185,6 @@
             </div>
         </section>
 
-        <section class="main-end">
-            <div class="inner">
-                <div class="main-end-title">
-                    고객과 함께 하는 기업, 우리씨엠씨<br>온 정성을 다해 업무를 수행하겠습니다.
-                </div>
-                <div class="main-end-links">
-                    <a href="#">지명원</a>
-                    <a href="#">오시는길</a>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer id="footer">
@@ -225,9 +217,10 @@
         // GSAP 애니메이션 초기화
         gsap.registerPlugin(ScrollTrigger);
         
-        // 텍스트 애니메이션 함수
-        function initTextAnimations() {
-            const section = document.querySelector(".section-1"); // 특정 섹션
+        // 페이지 로드 시 애니메이션 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            // 텍스트 애니메이션
+            const section = document.querySelector(".section-1");
             const lines = section.querySelectorAll(".text-line");
             
             // 첫 번째 줄 애니메이션
@@ -261,12 +254,8 @@
                     }
                 }
             );
-        }
-        
-        // 페이지 로드 시 애니메이션 초기화
-        document.addEventListener('DOMContentLoaded', () => {
-            initTextAnimations();
-            // 추가 섹션에 대한 애니메이션은 여기에 추가
+
+            // 메인 비주얼 배경 애니메이션
             gsap.to(".main-visual-background", {
                 scale: 1,
                 opacity: 1,
@@ -274,63 +263,56 @@
                 ease: "power2.out"
             });
 
+            // 텍스트 분할 애니메이션
             document.querySelectorAll('.split-text').forEach(el => {
-            const text = el.textContent;
-            el.innerHTML = '';
+                const text = el.textContent;
+                el.innerHTML = '';
 
-            text.split('').forEach(char => {
-                const span = document.createElement('span');
-                span.textContent = char;
-                el.appendChild(span);
+                text.split('').forEach(char => {
+                    const span = document.createElement('span');
+                    span.textContent = char;
+                    el.appendChild(span);
+                });
+
+                gsap.to(el.querySelectorAll('span'), {
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.04,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    delay: 1
+                });
             });
 
-            gsap.to(el.querySelectorAll('span'), {
-                opacity: 1,
-                y: 0,
-                stagger: 0.04,
-                duration: 0.8,
-                ease: 'power2.out',
-                delay: 1
-            });
-            });
-
+            // 비즈니스 섹션 핀 설정
             ScrollTrigger.create({
                 trigger: ".biz-section",
-                start: "top top",
-                //end: () => "+=" + document.querySelector(".biz-right").scrollHeight,
+                start: "top top", 
+                end: "bottom bottom",
                 pin: ".biz-left",
                 pinSpacing: true
             });
 
-            // 💨 카드 하나씩 올라오기
-            gsap.utils.toArray(".biz-card").forEach((card, i) => {
-            gsap.to(card, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out",
-                scrollTrigger: {
-                trigger: card,
-                start: "top 85%",
-                toggleActions: "play none none reverse"
+            // 서비스 섹션 애니메이션
+            ScrollTrigger.create({
+                trigger: ".service-section",
+                start: "top 50%",
+                end: "bottom 20%",
+                toggleClass: {
+                    targets: ".service-section",
+                    className: "active"
+                },
+                onEnter: () => {
+                    gsap.to(".service-title", {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: "power2.out"
+                    });
                 }
             });
-            });
 
-
-            // 전체 섹션 타이틀 애니
-            gsap.to(".service-title", {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: ".service-section",
-                start: "top 80%"
-            }
-            });
-
-            // 아이템 stagger 등장
+            // 서비스 아이템 애니메이션
             gsap.to(".service-item", {
                 opacity: 1,
                 y: 0,
@@ -343,9 +325,25 @@
                 }
             });
 
+            // dream-section 배경 펼치기 애니메이션
+            gsap.to('.dream-section .dream-bg', {
+                width: '100vw',
+                duration: 2.2,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '.dream-section',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            });
 
-
-
+            ScrollTrigger.create({
+                trigger: '.dream-section',
+                start: 'top 80%',
+                onEnter: () => {
+                    document.querySelector('.dream-section').classList.add('bg-animate');
+                }
+            });
         });
       </script>
 </body>

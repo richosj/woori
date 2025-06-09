@@ -8,26 +8,39 @@
 
 .service-section {
     text-align: center;
-    height: 100vh;
+    padding: 230px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
-    background: url(#{$image-path}/sec2-bg.png) no-repeat center center / cover;
-    
+    color: #000;
+    background: #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    transition: all 1s ease;
+    &.active{
+        //background:#fff url(#{$image-path}/sec3-bg.png) no-repeat center center / cover;
+        background-color: #0b448e;
+        color: #fff;
+        .service-title{
+            color: #fff;
+        }
+    }
+
     .service-title {
       font-size: 60px;
       font-weight: 500;
-      margin-bottom: 130px;
+      padding-bottom: 150px;
       opacity: 0;
       transform: translateY(40px);
+      transition: all 1s ease;
+      color: #000;
     }
   
     .service-list {
       display: flex;
       justify-content: space-around;
       gap: 0 160px;
-      
       .service-item {
         opacity: 0;
         transform: translateY(40px);
