@@ -47,7 +47,7 @@
 
             <div class="biz-section">
                 <div class="biz-left">
-                    <h2>업계 최고의<br>도시정비사업<br>전문 회사</h2>
+                    <h2>업계 최고의<br class="m-hidden"> 도시정비사업<br>전문 회사</h2>
                     <a href="#" class="btn-more1">VIEW MORE</a>
                 </div>
                 <div class="bizright">
@@ -89,7 +89,7 @@
         <!-- 추가 섹션은 여기에 배치됩니다 -->
         <section class="service-section">
             <div class="inner">
-                <h2 class="service-title">고객감동의 서비스를 실현하겠습니다</h2>
+                <h2 class="service-title">고객감동의 서비스를 <br class="m-block">실현하겠습니다</h2>
                 <div class="service-list">
                     <div class="service-item">
                         <img src="/assets/images/service-1.png" alt="" />
@@ -155,15 +155,13 @@
     
     <script type="module" src="/js/main.js"></script>
     <script>
-        // GSAP 애니메이션 초기화
         gsap.registerPlugin(ScrollTrigger);
         
         // 텍스트 애니메이션 함수
         function initTextAnimations() {
-            const section = document.querySelector(".section-1"); // 특정 섹션
+            const section = document.querySelector(".section-1");
             const lines = section.querySelectorAll(".text-line");
             
-            // 첫 번째 줄 애니메이션
             gsap.fromTo(
                 lines[0].querySelector(".text-fill"),
                 { clipPath: "inset(0 100% 0 0)" },
@@ -179,7 +177,6 @@
                 }
             );
             
-            // 두 번째 줄 애니메이션
             gsap.fromTo(
                 lines[1].querySelector(".text-fill"),
                 { clipPath: "inset(0 100% 0 0)" },
@@ -199,7 +196,7 @@
         // 페이지 로드 시 애니메이션 초기화
         document.addEventListener('DOMContentLoaded', () => {
             initTextAnimations();
-            // 추가 섹션에 대한 애니메이션은 여기에 추가
+            
             gsap.to(".main-visual-background", {
                 scale: 1,
                 opacity: 1,
@@ -208,104 +205,98 @@
             });
 
             document.querySelectorAll('.split-text').forEach(el => {
-            const text = el.textContent;
-            el.innerHTML = '';
+                const text = el.textContent;
+                el.innerHTML = '';
 
-            text.split('').forEach(char => {
-                const span = document.createElement('span');
-                span.textContent = char;
-                el.appendChild(span);
-            });
-
-            gsap.to(el.querySelectorAll('span'), {
-                opacity: 1,
-                y: 0,
-                stagger: 0.04,
-                duration: 0.8,
-                ease: 'power2.out',
-                delay: 1
-            });
-            });
-
-            ScrollTrigger.create({
-                trigger: ".biz-section",
-                start: "top top",
-                end: "bottom bottom",
-                pin: ".biz-left",
-                //pinSpacing: true
-            });
-
-            
-           // service-section 애니메이션
-           const serviceTl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".service-section",
-                    start: "top center",
-                    end: "top 20%",
-                    scrub: 1,
-                    //markers: true
-                }
-            });
-
-            // 배경색 변경과 타이틀 애니메이션
-            serviceTl.to(".service-section", {
-                backgroundColor: "#0b448e",
-                color: "#fff",
-                duration: 1
-            });
-
-            serviceTl.to(".service-title", {
-                y: 0,
-                opacity: 1,
-                color: "#fff",
-                duration: 1
-            }, "<");
-
-            // 서비스 아이템들 순차적으로 등장
-            gsap.utils.toArray(".service-item").forEach((item, i) => {
-                serviceTl.to(item, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.5,
-                    ease: "power2.out"
-                }, "-=0.3");
-            });
-
-            // 아이템 hover 효과
-            gsap.utils.toArray(".service-item").forEach(item => {
-                item.addEventListener("mouseenter", () => {
-                    gsap.to(item.querySelector("img"), {
-                        scale: 1.1,
-                        filter: "drop-shadow(0 0 6px #00f0ff80)",
-                        duration: 0.3
-                    });
+                text.split('').forEach(char => {
+                    const span = document.createElement('span');
+                    span.textContent = char;
+                    el.appendChild(span);
                 });
 
-                item.addEventListener("mouseleave", () => {
-                    gsap.to(item.querySelector("img"), {
-                        scale: 1,
-                        filter: "none",
-                        duration: 0.3
-                    });
+                gsap.to(el.querySelectorAll('span'), {
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.04,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    delay: 1
                 });
             });
 
             // 데스크톱 애니메이션
             ScrollTrigger.matchMedia({
-                "(min-width: 1024px)": function() {
+                "(min-width: 1001px)": function() {
+                    ScrollTrigger.create({
+                        trigger: ".biz-section",
+                        start: "top top",
+                        end: "bottom bottom",
+                        pin: ".biz-left"
+                    });
+                    
+                    // service-section 애니메이션
+                    const serviceTl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: ".service-section",
+                            start: "top center",
+                            end: "top 20%",
+                            scrub: 1
+                        }
+                    });
+
+                    // 배경색 변경과 타이틀 애니메이션
+                    serviceTl.to(".service-section", {
+                        backgroundColor: "#0b448e",
+                        color: "#fff",
+                        duration: 1
+                    });
+
+                    serviceTl.to(".service-title", {
+                        y: 0,
+                        opacity: 1,
+                        color: "#fff",
+                        duration: 1
+                    }, "<");
+
+                    // 서비스 아이템들 순차적으로 등장
+                    gsap.utils.toArray(".service-item").forEach((item, i) => {
+                        serviceTl.to(item, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.5,
+                            ease: "power2.out"
+                        }, "-=0.3");
+                    });
+
+                    // 아이템 hover 효과
+                    gsap.utils.toArray(".service-item").forEach(item => {
+                        item.addEventListener("mouseenter", () => {
+                            gsap.to(item.querySelector("img"), {
+                                scale: 1.1,
+                                filter: "drop-shadow(0 0 6px #00f0ff80)",
+                                duration: 0.3
+                            });
+                        });
+
+                        item.addEventListener("mouseleave", () => {
+                            gsap.to(item.querySelector("img"), {
+                                scale: 1,
+                                filter: "none",
+                                duration: 0.3
+                            });
+                        });
+                    });
+                    
                     const tl = gsap.timeline({
                         scrollTrigger: {
                             trigger: ".dream-section",
                             start: "top top",
                             end: "+=200%",
                             scrub: 1,
-                            pin: true,
-                            anticipatePin: 1,
-                            markers: true
+                            pin: true
                         }
                     });
 
-                    // 배경 이미지 나타나기 (우측에서 중앙으로)
                     tl.to(".dream-bg", {
                         position: "fixed",
                         width: "100vw",
@@ -317,61 +308,33 @@
                         ease: "none"
                     });
 
-                    // 텍스트 채우기 애니메이션 (배경이 30% 정도 채워졌을 때 시작)
                     tl.to(".text-fill", {
                         clipPath: "inset(0 0% 0 0)",
                         ease: "none"
                     }, "-=1");
 
-                    // dream-left 좌측으로 사라지기 (배경이 60% 정도 채워졌을 때 시작)
                     tl.to(".dream-left", {
                         opacity: 0,
                         x: "-100%",
                         ease: "none"
                     }, "-=0.5");
 
-                    // dream-end 나타나기 (배경이 80% 정도 채워졌을 때 시작)
                     tl.to(".dream-end", {
                         y: "0%",
                         opacity: 1,
                         ease: "none"
                     }, "-=0.5");
-
-                    // dream-end 텍스트 나타나기
-                    tl.to(".dream-end .end-content h2", {
-                        opacity: 1,
-                        y: 0,
-                        ease: "none"
-                    }, "-=0.3");
-
-                    tl.to(".dream-end .end-content .jump-link", {
-                        opacity: 1,
-                        y: 0,
-                        ease: "none"
-                    }, "-=0.3");
                 },
-                // 모바일 애니메이션
-                "(max-width: 768px)": function() {
-                    gsap.set(".dream-bg", {
-                        width: "100vw",
-                        height: "100vh",
-                        right: 0,
-                        clipPath: "circle(100% at 50% 50%)"
-                    });
-                    gsap.set(".text-fill", {
-                        clipPath: "inset(0 0% 0 0)"
-                    });
-                    gsap.set(".dream-end", {
-                        y: "0%",
-                        opacity: 1
-                    });
-                    gsap.set(".dream-end .end-content h2, .dream-end .end-content p", {
-                        opacity: 1,
-                        y: 0
-                    });
+                "(max-width: 1000px)": function() {
+                    
                 }
             });
         });
-      </script>
+
+        // 리사이즈 이벤트
+        window.addEventListener("resize", () => {
+            ScrollTrigger.refresh();
+        });
+    </script>
 </body>
 </html>
