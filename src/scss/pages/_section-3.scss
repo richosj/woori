@@ -8,24 +8,119 @@
 .dream-section{
     position: relative;
     width: 100vw;
-    height: 100vh;
+    //height: 200vh;
     overflow: hidden;
     background: none;
 
     .dream-bg {
         position: absolute;
-        left: 0; top: 0;
-        width: 0vw;
-        height: 100%;
-        background: url('/assets/images/dream-bg.jpg') no-repeat center center / cover;
+        right: 35%;
+        top: 50%;
+        width: 460px;
+        height: 460px;
         z-index: 0;
-        transition: width 2.2s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    &.bg-animate .dream-bg {
-        width: 100vw;
+        overflow: hidden;
+        transform: translate(50%, -50%);
+        clip-path: circle(50% at 50% 50%);
+        //transition: all 0.5s ease-in-out;
+        img {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
     }
     .inner {
         position: relative;
         z-index: 1;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5vw;
+    }
+
+    .dream-left {
+        position: relative;
+        z-index: 2;
+        width: 50%;
+        .text-wrapper {
+            .text-line {
+                position: relative;
+                margin-bottom: 1rem;
+                
+                .text-fill {
+                    color: black;
+                    clip-path: inset(0 100% 0 0);
+                    font-size: 3rem;
+                    font-weight: bold;
+                    position: relative;
+                    z-index: 2;
+                }
+                
+                .text-stroke {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    color: #cccccc;
+                    font-size: 3rem;
+                    font-weight: bold;
+                }
+            }
+        }
+        .desc {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+    }
+
+    .dream-right {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 45%;
+        height: 100vh;
+        z-index: 1;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .dream-end {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        padding: 4rem 5vw;
+        opacity: 0;
+        transform: translateY(100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .end-content {
+            text-align: center;
+            color: #fff;
+            h2 {
+                font-size: 3rem;
+                font-weight: bold;
+                margin-bottom: 1rem;
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            p {
+                font-size: 1.5rem;
+                line-height: 1.6;
+                opacity: 0;
+                transform: translateY(60px);
+            }
+        }
     }
 }

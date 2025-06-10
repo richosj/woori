@@ -116,7 +116,7 @@
         </section>
 
         <section class="dream-section">
-            <div class="dream-bg"></div>
+            <div class="dream-bg"><img src="/assets/images/dream-bg.png" alt=""></div>
             <div class="inner">
                 <div class="dream-left">
                     <div class="text-wrapper">
@@ -134,37 +134,20 @@
                         언제나 남들보다 한발 앞서서 준비하는 자세로 내일에 대비하고 있습니다.
                     </div>
                 </div>
-                <div class="dream-right">
-                    <span><img src="/assets/images/dream.png" alt=""></span>
+                
+
+                <div class="dream-end">
+                    <div class="end-content">
+                        <h2>우리의 미래</h2>
+                        <p>지속 가능한 성장과 혁신을 추구합니다</p>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer id="footer">
-        <div class="footer-container">
-            <h2></h2>
-            <div class="footer-content">
-                <div class="footer-info">
-                    <p>서울시 마포구 큰우물로75, 14층 사무실1405호(도화동,성지빌딩)</p>
-                    <div>
-                        <dl>
-                            <dt>Tel.</dt>
-                            <dd><a href="tel:02-3296-4886">02-3296-4886</a></dd>
-                        </dl>
-                        <dl>
-                            <dt>Fax.</dt>
-                            <dd>02-3296-4887</dd>
-                        </dl>
-                    </div>
-                </div>
-                <div class="copyright">
-                    Copyrights ⓒ wooricmc. All rights reserved.
-                </div>
-            </div>
-        </div>
-    </footer>
+    {{> footer}}
     
     
     <script type="module" src="/js/main.js"></script>
@@ -244,55 +227,147 @@
             ScrollTrigger.create({
                 trigger: ".biz-section",
                 start: "top top",
-                //end: () => "+=" + document.querySelector(".biz-right").scrollHeight,
+                end: "bottom bottom",
                 pin: ".biz-left",
-                pinSpacing: true
+                //pinSpacing: true
             });
 
-            // 💨 카드 하나씩 올라오기
-            gsap.utils.toArray(".biz-card").forEach((card, i) => {
-            gsap.to(card, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out",
+            
+           // service-section 애니메이션
+           const serviceTl = gsap.timeline({
                 scrollTrigger: {
-                trigger: card,
-                start: "top 85%",
-                toggleActions: "play none none reverse"
-                }
-            });
-            });
-
-
-            // 전체 섹션 타이틀 애니
-            gsap.to(".service-title", {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: ".service-section",
-                start: "top 80%"
-            }
-            });
-
-            // 아이템 stagger 등장
-            gsap.to(".service-item", {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                stagger: 0.2,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: ".service-list",
-                    start: "top 85%"
+                    trigger: ".service-section",
+                    start: "top center",
+                    end: "top 20%",
+                    scrub: 1,
+                    //markers: true
                 }
             });
 
+            // 배경색 변경과 타이틀 애니메이션
+            serviceTl.to(".service-section", {
+                backgroundColor: "#0b448e",
+                color: "#fff",
+                duration: 1
+            });
 
+            serviceTl.to(".service-title", {
+                y: 0,
+                opacity: 1,
+                color: "#fff",
+                duration: 1
+            }, "<");
 
+            // 서비스 아이템들 순차적으로 등장
+            gsap.utils.toArray(".service-item").forEach((item, i) => {
+                serviceTl.to(item, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    ease: "power2.out"
+                }, "-=0.3");
+            });
 
+            // 아이템 hover 효과
+            gsap.utils.toArray(".service-item").forEach(item => {
+                item.addEventListener("mouseenter", () => {
+                    gsap.to(item.querySelector("img"), {
+                        scale: 1.1,
+                        filter: "drop-shadow(0 0 6px #00f0ff80)",
+                        duration: 0.3
+                    });
+                });
+
+                item.addEventListener("mouseleave", () => {
+                    gsap.to(item.querySelector("img"), {
+                        scale: 1,
+                        filter: "none",
+                        duration: 0.3
+                    });
+                });
+            });
+
+            // 데스크톱 애니메이션
+            ScrollTrigger.matchMedia({
+                "(min-width: 769px)": function() {
+                    const tl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: ".dream-section",
+                            start: "top top",
+                            end: "+=200%",
+                            scrub: 1,
+                            pin: true,
+                            anticipatePin: 1,
+                            markers: true
+                        }
+                    });
+
+                    // 배경 이미지 나타나기 (우측에서 중앙으로)
+                    tl.to(".dream-bg", {
+                        position: "fixed",
+                        width: "100vw",
+                        height: "100vh",
+                        right: 0,
+                        top: 0,
+                        transform: "none",
+                        clipPath: "circle(100% at 50% 50%)",
+                        ease: "none"
+                    });
+
+                    // 텍스트 채우기 애니메이션 (배경이 30% 정도 채워졌을 때 시작)
+                    tl.to(".text-fill", {
+                        clipPath: "inset(0 0% 0 0)",
+                        ease: "none"
+                    }, "-=0.5");
+
+                    // dream-left 좌측으로 사라지기 (배경이 60% 정도 채워졌을 때 시작)
+                    tl.to(".dream-left", {
+                        opacity: 0,
+                        x: "-100%",
+                        ease: "none"
+                    }, "-=0.5");
+
+                    // dream-end 나타나기 (배경이 80% 정도 채워졌을 때 시작)
+                    tl.to(".dream-end", {
+                        y: "0%",
+                        opacity: 1,
+                        ease: "none"
+                    }, "-=0.5");
+
+                    // dream-end 텍스트 나타나기
+                    tl.to(".dream-end .end-content h2", {
+                        opacity: 1,
+                        y: 0,
+                        ease: "none"
+                    }, "-=0.3");
+
+                    tl.to(".dream-end .end-content p", {
+                        opacity: 1,
+                        y: 0,
+                        ease: "none"
+                    }, "-=0.3");
+                },
+                // 모바일 애니메이션
+                "(max-width: 768px)": function() {
+                    gsap.set(".dream-bg", {
+                        width: "100vw",
+                        height: "100vh",
+                        right: 0,
+                        clipPath: "circle(100% at 50% 50%)"
+                    });
+                    gsap.set(".text-fill", {
+                        clipPath: "inset(0 0% 0 0)"
+                    });
+                    gsap.set(".dream-end", {
+                        y: "0%",
+                        opacity: 1
+                    });
+                    gsap.set(".dream-end .end-content h2, .dream-end .end-content p", {
+                        opacity: 1,
+                        y: 0
+                    });
+                }
+            });
         });
       </script>
 </body>

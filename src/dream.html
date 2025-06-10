@@ -1,0 +1,143 @@
+<!-- @pageTitle 메인 -->
+<!-- @pageCreated 2025-04-17 -->
+<!-- @pageUpdated 2025-04-21 -->
+<!-- @pageNote 메인 구성 변경 -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    {{> meta}}
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+    {{> header}}
+
+    <!-- main // -->
+    <main id="main">
+        <div class="test-section"></div>
+        <section class="dream-section">
+            <div class="dream-bg"><img src="/assets/images/dream-bg.png" alt=""></div>
+            <div class="inner">
+                <div class="dream-left">
+                    <div class="text-wrapper">
+                        <div class="text-line">
+                            <div class="text-fill">앞선 창의와 도전으로</div>
+                            <div class="text-stroke">앞선 창의와 도전으로</div>
+                        </div>
+                        <div class="text-line">
+                            <div class="text-fill">미래를 준비합니다</div>
+                            <div class="text-stroke">미래를 준비합니다</div>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        급속한 시장변화에 선두에 나설 수 있도록 연구개발 및 인재육성에 투자를 아끼지 않고 있으며,<br>
+                        언제나 남들보다 한발 앞서서 준비하는 자세로 내일에 대비하고 있습니다.
+                    </div>
+                </div>
+                
+
+                <div class="dream-end">
+                    <div class="end-content">
+                        <h2>우리의 미래</h2>
+                        <p>지속 가능한 성장과 혁신을 추구합니다</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="/js/main.js"></script>
+    <script>
+        // GSAP 애니메이션 초기화
+        gsap.registerPlugin(ScrollTrigger);
+        // 페이지 로드 시 애니메이션 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            // 데스크톱 애니메이션
+            ScrollTrigger.matchMedia({
+                "(min-width: 769px)": function() {
+                    const tl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: ".dream-section",
+                            start: "top top",
+                            end: "+=200%",
+                            scrub: 1,
+                            pin: true,
+                            anticipatePin: 1,
+                            markers: true
+                        }
+                    });
+
+                    // 배경 이미지 나타나기 (우측에서 중앙으로)
+                    tl.to(".dream-bg", {
+                        position: "fixed",
+                        width: "100vw",
+                        height: "100vh",
+                        right: 0,
+                        top: 0,
+                        transform: "none",
+                        clipPath: "circle(100% at 50% 50%)",
+                        ease: "none"
+                    });
+
+                    // 텍스트 채우기 애니메이션 (배경이 30% 정도 채워졌을 때 시작)
+                    tl.to(".text-fill", {
+                        clipPath: "inset(0 0% 0 0)",
+                        ease: "none"
+                    }, "-=0.5");
+
+                    // dream-left 좌측으로 사라지기 (배경이 60% 정도 채워졌을 때 시작)
+                    tl.to(".dream-left", {
+                        opacity: 0,
+                        x: "-100%",
+                        ease: "none"
+                    }, "-=0.5");
+
+                    // dream-end 나타나기 (배경이 80% 정도 채워졌을 때 시작)
+                    tl.to(".dream-end", {
+                        y: "0%",
+                        opacity: 1,
+                        ease: "none"
+                    }, "-=0.5");
+
+                    // dream-end 텍스트 나타나기
+                    tl.to(".dream-end .end-content h2", {
+                        opacity: 1,
+                        y: 0,
+                        ease: "none"
+                    }, "-=0.3");
+
+                    tl.to(".dream-end .end-content p", {
+                        opacity: 1,
+                        y: 0,
+                        ease: "none"
+                    }, "-=0.3");
+                },
+                // 모바일 애니메이션
+                "(max-width: 768px)": function() {
+                    gsap.set(".dream-bg", {
+                        width: "100vw",
+                        height: "100vh",
+                        right: 0,
+                        clipPath: "circle(100% at 50% 50%)"
+                    });
+                    gsap.set(".text-fill", {
+                        clipPath: "inset(0 0% 0 0)"
+                    });
+                    gsap.set(".dream-end", {
+                        y: "0%",
+                        opacity: 1
+                    });
+                    gsap.set(".dream-end .end-content h2, .dream-end .end-content p", {
+                        opacity: 1,
+                        y: 0
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -8,7 +8,8 @@
 
 .service-section {
     text-align: center;
-    padding: 230px 0;
+    height: 100vh;
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,21 +18,13 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    transition: all 1s ease;
-    &.active{
-        //background:#fff url(#{$image-path}/sec3-bg.png) no-repeat center center / cover;
-        background-color: #0b448e;
-        color: #fff;
-        .service-title{
-            color: #fff;
-        }
-    }
-
+    //transition: all 1s ease;
+    position: relative;
     .service-title {
       font-size: 60px;
       font-weight: 500;
       padding-bottom: 150px;
-      opacity: 0;
+      //opacity: 0;
       transform: translateY(40px);
       transition: all 1s ease;
       color: #000;
